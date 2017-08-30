@@ -1,0 +1,68 @@
+body {
+  background: #000;
+  color: #ffffff;
+}
+.App {
+  text-align: center;
+  padding: 5%;
+}
+.App .App-title {
+  font-size: 26px;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.profile .profile-info {
+  margin-left: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.profile .profile-img {
+  width: 150px;
+  height: 150px;
+  border: 3px solid white;
+  border-radius: 75px;
+  object-fit: cover;
+}
+.profile .profile-name {
+  font-size: 26px;
+}
+.profile .profile-followers {
+  font-size: 18px;
+}
+.profile .profile-genres {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.album {
+  width: 220px;
+  height: 220px;
+  border: 3px solid white;
+  margin: 10px;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.album .album-img {
+  width: 220px;
+  height: 220px;
+  border: 3px solid white;
+  border-radius: 3px;
+  object-fit: cover;
+  position: absolute;
+}
+.album .album-name {
+  background-color: black;
+  color: white;
+  opacity: 0.75;
+  width: 220px;
+  text-align: center;
+  position: absolute;
+  margin-left: 3px;
+  bottom: 0;
+  padding: 10px;
+}
