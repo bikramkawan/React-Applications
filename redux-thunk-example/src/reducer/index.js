@@ -22,13 +22,13 @@ export default function todosReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 error: null,
-                todos: [...state.todos, action.payload],
+                photos:action.payload
             };
         case GET_PHOTO_FAILED:
             return {
                 ...state,
                 loading: false,
-                error: action.payload.error,
+                error: action.payload,
             };
         default:
             return state;

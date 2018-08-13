@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPhotos } from '../actions/index';
+import { getPhotos, helloAction, getPosts } from '../actions/index';
 import Loader from './Loader';
 
 class Home extends Component {
     componentWillMount() {
         console.log(this.props);
         this.props.getPhotos();
+        this.props.helloAction();
+        this.props.getPosts();
     }
 
     render() {
@@ -25,4 +27,6 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, { getPhotos })(Home);
+export default connect(mapStateToProps, { getPhotos, helloAction, getPosts })(
+    Home,
+);

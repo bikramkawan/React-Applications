@@ -2,39 +2,61 @@ import {
     GET_PHOTO_STARTED,
     GET_PHOTO_SUCCESS,
     GET_PHOTO_FAILED,
+    HELL_ACTION,
+    GET_POST_STARTED,
+    GET_POST_SUCCESS,
+    GET_POST_FAILED,
 } from './types';
+import { CALL_API } from './api';
 
-import axios from 'axios';
-
-export const getPhotos = params => {
-    return dispatch => {
-        dispatch(getPhotosStarted());
-
-        axios
-            .get(`https://jsonplaceholder.typicode.com/posts`)
-            .then(res => {
-                dispatch(getPhotosSuccess(res.data));
-            })
-            .catch(err => {
-                dispatch(getPhotosFailed(err.message));
-            });
+export const getPosts = params => {
+    return (dispatch, getState) => {
+        dispatch({
+            [CALL_API]: {
+                endpoint: 'https://jsonplaceholder.typicode.com/posts1',
+                param: 'bikram',
+                types: [
+                    GET_POST_STARTED,
+                    response => {
+                        return {
+                            type: GET_POST_SUCCESS,
+                            payload: response.response,
+                        };
+                    },
+                    response => {
+                        return {
+                            type: GET_POST_FAILED,
+                            payload: response.error,
+                        };
+                    },
+                ],
+            },
+        });
     };
 };
 
-const getPhotosSuccess = todo => ({
-    type: GET_PHOTO_SUCCESS,
-    payload: {
-        ...todo,
-    },
-});
+export const getPhotos = params => {
+    return (dispatch, getState) => {
+        dispatch({
+            [CALL_API]: {
+                endpoint: 'https://jsonplaceholder.typicode.com/posts',
+                param: 'bikram',
+                types: [
+                    GET_PHOTO_STARTED,
+                    response => {
+                        return {
+                            type: GET_PHOTO_SUCCESS,
+                            payload: response.response,
+                        };
+                    },
+                    GET_PHOTO_FAILED,
+                ],
+            },
+        });
+    };
+};
 
-const getPhotosStarted = () => ({
-    type: GET_PHOTO_STARTED,
-});
-
-const getPhotosFailed = error => ({
-    type: GET_PHOTO_FAILED,
-    payload: {
-        error,
-    },
+export const helloAction = params => ({
+    type: HELL_ACTION,
+    payload: { test: 'TEST' },
 });
